@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center text-primary">Your Tasks</h2>
+
+  <div *ngIf="loading" class="alert alert-info text-center">Loading tasks...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="!loading && tasks.length === 0" class="alert alert-warning text-center">No tasks available</div>
+
+  <div class="table-responsive" *ngIf="tasks.length > 0">
+    <table class="table table-bordered table-striped shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.dueDate | date: 'mediumDate' }}</td>
+          <td>
+            <span [ngClass]="{
+              'badge bg-success': task.priority === 'low',
+              'badge bg-warning text-dark': task.priority === 'medium',
+              'badge bg-danger': task.priority === 'high'
+            }">{{ task.priority }}</span>
+          </td>
+          <td>
+            <span class="badge" [ngClass]="task.completed ? 'bg-success' : 'bg-secondary'">
+              {{ task.completed ? 'Completed' : 'Pending' }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-info btn-sm me-1" (click)="viewTask(task)">
+              <i class="bi bi-eye"></i> View
+            </button>
+            <button class="btn btn-success btn-sm me-1" (click)="markCompleted(task)" [disabled]="task.completed">
+              <i class="bi bi-check-circle"></i> Done
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteTask(task._id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

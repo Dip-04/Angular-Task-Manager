@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Diptish's Task Manager</a>
+    <div class="d-flex">
+      <!-- Show Login/Register if not logged in -->
+      <ng-container *ngIf="!isLoggedIn; else loggedIn">
+        <a class="btn btn-outline-light me-2" href="/login">Login</a>
+        <a class="btn btn-outline-light" href="/register">Register</a>
+      </ng-container>
+
+      <!-- Show Add Tasks, Show Tasks, Logout if logged in -->
+      <ng-template #loggedIn>
+        <a class="btn btn-outline-light me-2" href="/add-tasks">Add Tasks</a>
+        <a class="btn btn-outline-light me-2" href="/show-tasks">Show Tasks</a>
+        <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container" style="height: fit-content;">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+  <small>© 2025 Diptish's World</small>
+</footer>

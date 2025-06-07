@@ -1,0 +1,70 @@
+<div
+  class="d-flex justify-content-center align-items-center flex-column vh-100"
+  style="
+    background-image: url('https://th.bing.com/th/id/OIP.Vaxetk266K_z2xJKi0Xw9gHaEK?r=0&rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  "
+>
+  <h1 class="text-white mb-4 display-5 fw-bold" style="text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);">
+    Join Diptish's World
+  </h1>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="bg-white p-5 rounded-4 shadow-lg w-100"
+    style="max-width: 450px;"
+  >
+    <div class="text-center mb-4">
+      <h2 class="text-success fw-bold">Create an Account</h2>
+      <p class="text-muted mb-0">Please fill in the form to register</p>
+    </div>
+
+    <!-- Name -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control rounded-3 shadow-sm"
+        placeholder="Enter your name"
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Email</label>
+      <input
+        formControlName="email"
+        type="email"
+        class="form-control rounded-3 shadow-sm"
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <!-- Password -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">Password</label>
+      <input
+        formControlName="password"
+        type="password"
+        class="form-control rounded-3 shadow-sm"
+        placeholder="Create a password"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success w-100 rounded-3 py-2 fw-semibold">
+      <i class="bi bi-person-plus-fill me-2"></i> Register
+    </button>
+
+    <!-- Optional: Login Link -->
+    <div class="text-center mt-3">
+      <small class="text-muted">Already have an account?
+        <a href="/login" class="text-decoration-none text-success fw-semibold">Login</a>
+      </small>
+    </div>
+  </form>
+</div>
